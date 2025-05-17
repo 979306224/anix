@@ -11,7 +11,7 @@
         "cmd": [
           "/bin/bash",
           "-c",
-          "echo "Running gpu check"; if bench --check-gpu; then text-generation-launcher --model-id ../../root/snapshots/069adfb3ab0ceba60b9af8f11fa51558b9f9d396 --port 8080 > /dev/null 2>&1 & sleep 30 & echo "Running lm-benchmark..." & bench --benchmark llm --url http://localhost:8080 --ping_correction --job-length 60 --model llama3.1_8B --timeout 10 --llm-framework tgi --endpoint /v1/completions --use_prompt_field --version v1.0.1; else echo "GPU check failed. Printing nvidia-smi output:"; nvidia-smi; fi"
+          "echo \"Running gpu check\"; if bench --check-gpu; then text-generation-launcher --model-id ../../root/snapshots/069adfb3ab0ceba60b9af8f11fa51558b9f9d396 --port 8080 > /dev/null 2>&1 & sleep 30; echo \"Running lm-benchmark...\"; bench --benchmark llm --url http://localhost:8080 --ping_correction --job-length 60 --model llama3.1_8B --timeout 10 --llm-framework tgi --endpoint /v1/completions --use_prompt_field --version v1.0.1; else echo \"GPU check failed. Printing nvidia-smi output:\"; nvidia-smi; fi"
         ],
         "env": {
           "CUDA_VISIBLE_DEVICES": "0",
@@ -23,7 +23,7 @@
           {
             "type": "S3",
             "url": "https://models.nosana.io/hugging-face/llama3.1/8b/models--unsloth--Meta-Llama-3.1-8B",
-            "target": "/root/",
+            "target": "/root/"
           }
         ]
       },

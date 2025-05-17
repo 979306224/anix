@@ -20,7 +20,7 @@
 "type": "S3",
 "target": "/root/"
 }
-]
+],
 },
 "type": "container/run",
 "results": {

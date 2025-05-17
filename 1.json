@@ -1,0 +1,33 @@
+{
+  "type": "benchmark",
+  "version": "0.1",
+  "meta": {
+    "trigger": "cli"
+  },
+	"ops": [
+	{
+		"id":"lmdepoy_llama_8b",
+		"args": {
+		   "cmd": [
+		"/bin/bash",
+		"-c",
+		"echo "Running gpu check"; if bench --check-gpu; then echo "Starting lmdeploy service..."; lmdeploy serve api_server ../../root/snapshots/069adfb3ab0ceba60b9af8f11fa51558b9f9d396 --model-name llama3.1_8B --chat-template /chat_template.json > /dev/null 2>&1 & sleep 30 & echo "Running lm-benchmark..." & bench --benchmark llm --url http://localhost:23333 --ping_correction --job-length 60 --model llama3.1_8B --timeout 10 --llm-framework lmdeploy --version v1.0.1; else echo "GPU check failed. Printing nvidia-smi output:"; nvidia-smi; fi"
+		   ],
+	"env": {
+	"CUDA_VISIBLE_DEVICES": "0",
+	"CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+},
+	"gpu": true,
+	"image": "docker.io/nosana/llm_benchmark-lmdeploy:1.0.7",
+	"resources": [
+	   {
+		"url": "https://models.nosana.io/hugging-face/llama3.1/8b/models--unsloth--Meta-Llama-3.1-8B",
+		"type": "S3",
+		"target": "/root/"
+	    }
+	]
+		},
+		"type": "container/run"
+	}
+    ]
+}

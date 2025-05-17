@@ -1,34 +1,28 @@
 {
-"ops": [
-{
-  "id": "lmdepoy_llama_8b",
-  "args": {
-    "cmd": [
-      "/bin/bash",
-      "-c",
-      "echo",
-      "done"
-    ],
-    "env": {
-      "CUDA_VISIBLE_DEVICES": "0",
-      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
-    },
-    "gpu": true,
-    "image": "docker.io/nosana/llm_benchmark-lmdeploy:1.0.7",
-    "resources": [
-      {
-        "url": "https://models.nosana.io/hugging-face/llama3.1/8b/models--unsloth--Meta-Llama-3.1-8B",
-        "type": "S3",
-        "target": "/root/"
-      }
-    ]    
-},
-"type": "container/run"
-},  
-],
-"meta": {
-  "trigger": "benchmark"
-},
   "type": "container",
-  "version": "0.1"
+  "version": "0.1",
+  "meta": {
+    "trigger": "benchmark"
+  },
+  "ops": [
+    {
+      "id": "lmdepoy_llama_8b",
+      "args": {
+        "cmd": [
+          "echo",
+          "done"
+        ],
+        "gpu": true,
+        "image": "docker.io/nosana/llm_benchmark-lmdeploy:1.0.7",
+        "resources": [
+          {
+            "type": "S3",
+            "url": "https://models.nosana.io/hugging-face/llama3.1/8b/models--unsloth--Meta-Llama-3.1-8B",
+            "target": ""/root/",
+          }
+        ]
+      },
+      "type": "container/run"
+    }
+  ]
 }

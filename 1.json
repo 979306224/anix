@@ -22,7 +22,7 @@
       }
     ]    
 },
-"type": "container/run",
+"type": "container/run"
 },  
 ],
 "meta": {

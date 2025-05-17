@@ -23,9 +23,6 @@
     ]    
 },
 "type": "container/run",
- "results": {
-   "results_llm_benchmark": "(?<=LLM benchmark results: ).*"
- }
 },  
 ],
 "meta": {
